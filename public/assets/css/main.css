@@ -16,7 +16,7 @@ body {
   flex-wrap: wrap; }
   .shows-list__item {
     padding: 20px;
-    margin: 15px; }
+    margin: 10px; }
 
 .selected {
   background-color: red; }
