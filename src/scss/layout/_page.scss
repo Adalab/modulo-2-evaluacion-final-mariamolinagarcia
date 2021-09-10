@@ -2,6 +2,24 @@ body {
   padding: 2rem;
   height: 100vh;
 }
+.shows-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  &__item {
+    padding: 20px;
+    margin: 15px;
+  }
+}
+.selected {
+  background-color: red;
+}
+.section__container {
+  width: 100%;
+}
 
 .hidden {
   display: none;
