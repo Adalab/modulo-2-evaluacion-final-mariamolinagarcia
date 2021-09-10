@@ -9,7 +9,9 @@ const form = document.querySelector('.js_form');
 
     //creo un array vacío para llenarlo con el fecth al traer el listado de la API
 let tvShows=[];
-    
+
+let favoritesTvShows=[];
+
     //esta función es para que añada el listado al ul del html
  function paintShows (){      
     let html= '';
@@ -62,21 +64,52 @@ form.addEventListener('submit' , formPreventD);
 
 // *   FAVORITOS
 
+// es favorito?
+
+
+
+// aquí traigo todos los elemenos <li> y les añado un evento click
  function listenList(){
     const showLi = document.querySelectorAll('.js_show');
 
     for (const itemShow of showLi) {
-        itemShow.addEventListener('click' , listenerfunc)
+        itemShow.addEventListener('click' , listenerfav);  
        
     }
 
 }
 
-function listenerfunc(event){
-    console.log(event.currentTarget.id);
-   
+function listenerfav(event){
+    const selectedLi = event.currentTarget;
+    const selectedShow= parseInt(event.currentTarget.id);
+    const favclicked = tvShows.find((show)=>{
+    return show.id === selectedShow.id;
+
+    });
+console.log(favclicked);
+
+    const favoriteFound = favoritesTvShows.findIndex((fav)=>{
+    return fav.id === selectedShow;
+    
+});
+console.log(favoriteFound);
+
+    if(favoriteFound === -1){
+        favoritesTvShows.push(favclicked);
+        selectedLi.classList.add('selected');
+
+    }else{
+        favoritesTvShows.splice(favoriteFound, 1);
+        selectedLi.classList.remove('selected');
+    };
+
+console.log(favoritesTvShows);
+
 
 }
+
+
+
 
 
 
