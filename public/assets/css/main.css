@@ -7,6 +7,14 @@ body {
   padding: 2rem;
   height: 100vh; }
 
+.page__main {
+  display: flex;
+  flex-direction: column; }
+
+.container {
+  display: flex;
+  flex-direction: row; }
+
 .shows-list {
   list-style: none;
   display: flex;
@@ -18,11 +26,15 @@ body {
     padding: 20px;
     margin: 10px; }
 
+.fav-container {
+  margin-top: 30px;
+  background-color: #b1b1b1; }
+
+.fav-list {
+  list-style: none; }
+
 .selected {
   background-color: red; }
-
-.section__container {
-  width: 100%; }
 
 .hidden {
   display: none; }

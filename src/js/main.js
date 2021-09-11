@@ -81,15 +81,16 @@ form.addEventListener('submit' , formPreventD);
 
 function listenerfav(event){
     const selectedLi = event.currentTarget;
-    const selectedShow= parseInt(event.currentTarget.id);
-    const favclicked = tvShows.find((show)=>{
-    return show.id === selectedShow.id;
+    const selectedShow = parseInt(selectedLi.id);
+    const favclicked = tvShows.find((tvshow)=>{
+    
+        return tvshow.show.id === selectedShow;
 
     });
 console.log(favclicked);
 
     const favoriteFound = favoritesTvShows.findIndex((fav)=>{
-    return fav.id === selectedShow;
+        return fav.show.id === selectedShow;
     
 });
 console.log(favoriteFound);
@@ -97,23 +98,25 @@ console.log(favoriteFound);
     if(favoriteFound === -1){
         favoritesTvShows.push(favclicked);
         selectedLi.classList.add('selected');
-
+        
     }else{
         favoritesTvShows.splice(favoriteFound, 1);
         selectedLi.classList.remove('selected');
     };
-
+   
 console.log(favoritesTvShows);
 
 
 }
 
+showsList.addEventListener('click' , listenList);
 
 
+//! fin añadir a favoritos
+
+//* sidebar favoritos
 
 
-
-showsList.addEventListener('click' , listenList)
 
 
 
