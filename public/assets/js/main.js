@@ -4,6 +4,8 @@ const inputSearch = document.querySelector('.js_input');
 const button = document.querySelector('.js_button');
 const showsList = document.querySelector('.js_shows_list');
 const form = document.querySelector('.js_form');
+const favoriteSidebar =document.querySelector('.js_fav_list');
+const favoritesContainer =document.querySelector('.js_favorites_container');
 
 // * TRAER LOS ITEMS DEL API Y PINTARLOS EN EL LISTADO
 
@@ -74,7 +76,7 @@ form.addEventListener('submit' , formPreventD);
 
     for (const itemShow of showLi) {
         itemShow.addEventListener('click' , listenerfav);  
-       
+        paintFavoriteShows ();
     }
 
 }
@@ -98,16 +100,18 @@ console.log(favoriteFound);
     if(favoriteFound === -1){
         favoritesTvShows.push(favclicked);
         selectedLi.classList.add('selected');
-        
+       
     }else{
         favoritesTvShows.splice(favoriteFound, 1);
-        selectedLi.classList.remove('selected');
+        selectedLi.classList.remove('selected'); 
+        
     };
    
 console.log(favoritesTvShows);
 
 
 }
+paintFavoriteShows ()
 
 showsList.addEventListener('click' , listenList);
 
@@ -116,7 +120,29 @@ showsList.addEventListener('click' , listenList);
 
 //* sidebar favoritos
 
+function paintFavoriteShows (){      
+    let html= '';
 
+    for (const favShow of favoritesTvShows) {
+        
+        html+= `<li class="favs-list__item js_fav_show" id="${favShow.show.id}">`;
+        
+        html+=`<div class="fav__container">`;         
+        
+       
+       if(favShow.show.image == null){
+            
+           html+=`<img class="fav-image" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="${favShow.show.name}">`;  
+        }else{
+           html+=`<img src="${favShow.show.image.medium}" alt="${favShow.show.name}">`;
+        }; 
+    
+        html+=`<h3>${favShow.show.name}</h3>`;         
+        html+=`</div>`;
+        favoriteSidebar.innerHTML = html;
+         } 
+         
+    }
 
 
 

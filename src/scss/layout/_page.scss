@@ -33,6 +33,13 @@ body {
 .fav-list {
   list-style: none;
 }
+.fav__container {
+  width: 250px;
+}
+
+.fav-image {
+  transform: scale(0.5);
+}
 
 .selected {
   background-color: red;
