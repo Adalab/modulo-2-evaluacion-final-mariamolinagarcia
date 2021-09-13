@@ -1,52 +1,91 @@
-body {
-  padding: 2rem;
-  height: 100vh;
+html {
+  background-color: rgb(34, 34, 34);
 }
-.page__main {
-  display: flex;
-  flex-direction: column;
+body {
+  //padding: 2.5rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 100%;
+  background: #f5f5f5;
 }
 h2 {
   font-family: $font-text;
 }
+.main {
+  display: flex;
+  flex-direction: row;
 
-.title {
-}
-.container {
-  display: flex;
-  flex-direction: row;
-}
-.section__container {
-}
-.shows-list {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  &__item {
-    padding: 20px;
-    margin: 10px;
+  &__section {
+    order: 2;
+
+    &--shows-list {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      &__item {
+        padding: 20px;
+        margin: 10px;
+
+        & h3 {
+          font-family: $font-text;
+          text-align: center;
+        }
+      }
+    }
   }
-}
-.fav-container {
-  margin-top: 30px;
-  background-color: grayscale($color: #b1b0b0);
-}
-.fav-list {
-  list-style: none;
-}
-.fav__container {
-  width: 250px;
-}
 
-.fav-image {
-  transform: scale(0.5);
+  &__aside {
+    order: 1;
+
+    &--container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 15px;
+      background-color: grayscale($color: #e8e8e8);
+      border-radius: 4px;
+      padding: 20px;
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        text-align: center;
+        margin-top: 20px;
+
+        &--item {
+          display: block;
+          margin-top: 10px;
+          margin-bottom: 5px;
+
+          &__container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            & h3 {
+              font-family: $font-text;
+              margin-left: 10px;
+            }
+          }
+          &__image {
+            width: 100px;
+            padding: -20px;
+          }
+        }
+      }
+    }
+  }
 }
 
 .selected {
-  background-color: red;
+  background-color: rgb(199, 50, 50);
+  border-radius: 4px;
 }
 
 .hidden {

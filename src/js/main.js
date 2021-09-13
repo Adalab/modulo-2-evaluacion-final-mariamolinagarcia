@@ -21,7 +21,7 @@ let favoritesTvShows=[];
     //hago un bucle para recorrer todos los items que devuelve la API
     for (const show of tvShows) {
         
-        html+= `<li class="shows-list__item js_show" id="${show.show.id}">`;
+        html+= `<li class="main__section--shows-list__item js_show" id="${show.show.id}">`;
         html+=`<div class="show__container">`;         
         
         //aquí hago un condicional para que ponga una imagen alternativa si no tiene imagen desde la API
@@ -116,7 +116,8 @@ console.log(favoritesTvShows);
 
     if(favoritesTvShows.length === 0){
         favoritesContainer.classList.add('hidden');
-    }else{favoritesContainer.classList.remove('hidden');
+    }else{
+        favoritesContainer.classList.remove('hidden');
     }
 paintFavoriteShows ();
 }
@@ -134,16 +135,16 @@ function paintFavoriteShows (){
 
     for (const favShow of favoritesTvShows) {
         
-        html+= `<li class="favs-list__item js_fav_show" id="${favShow.show.id}">`;
+        html+= `<li class="main__aside--container__list--item js_fav_show" id="${favShow.show.id}">`;
         
-        html+=`<div class="fav__container">`;         
+        html+=`<div class="main__aside--container__list--item__container">`;         
         
        
        if(favShow.show.image == null){
             
-           html+=`<img class="fav-image" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="${favShow.show.name}">`;  
+           html+=`<img class="main__aside--container__list--item__image" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="${favShow.show.name}">`;  
         }else{
-           html+=`<img class="fav-image" src="${favShow.show.image.medium}" alt="${favShow.show.name}">`;
+           html+=`<img class="main__aside--container__list--item__image" src="${favShow.show.image.medium}" alt="${favShow.show.name}">`;
         }; 
     
         html+=`<h3>${favShow.show.name}</h3>`;         
