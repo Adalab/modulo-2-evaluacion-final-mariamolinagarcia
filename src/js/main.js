@@ -19,11 +19,21 @@ let favoritesTvShows=[];
 
 function paintShows (){      
     let html= '';
-
+    let favClass="";
     for (const show of tvShows) {
-        
-        html+= `<li class="main__section--shows-list__item js_show" id="${show.show.id}">`;
-        html+=`<div class="show__container">`;         
+        const isFavorite = favoritesTvShows.find((favShow)=>{
+    
+            return favShow.show.id === show.show.id;
+            
+        });
+        if(isFavorite !== undefined){
+            favClass="selected";
+        }else{
+            favClass="";
+        };
+        console.log(isFavorite)
+        html+= `<li class="main__section--shows-list__item js_show ${favClass}" id="${show.show.id}">`;
+        html+=`<div class="show__container ">`;         
         
        if(show.show.image == null){
             
@@ -103,13 +113,12 @@ function listenerfav(event){
 
     if(favoriteFound === -1){
         favoritesTvShows.push(favclicked);
-        selectedLi.classList.add('selected');
+       
         
        
     }else{
         favoritesTvShows.splice(favoriteFound, 1);
-        selectedLi.classList.remove('selected'); 
-        
+               
     };
     setLocalStorage();
    
@@ -121,6 +130,8 @@ function listenerfav(event){
         favoritesContainer.classList.remove('hidden');
     }
 paintFavoriteShows ();
+paintShows ()
+
 }
 
 //! END ADD TO FAVORITES
@@ -144,7 +155,8 @@ function paintFavoriteShows (){
            html+=`<img class="main__aside--container__list--item__image" src="${favShow.show.image.medium}" alt="${favShow.show.name}">`;
         }; 
     
-        html+=`<h3>${favShow.show.name}</h3>`;         
+        html+=`<h3>${favShow.show.name}</h3>`;     
+        html+=`<input type="button" class="js_fav_button fav_button>"`;      
         html+=`</div>`;
         favoriteSidebar.innerHTML = html;
          }
@@ -177,3 +189,9 @@ function setLocalStorage(){
     localStorage.setItem('shows' ,JSON.stringify(favoritesTvShows));
 }
 //! END LOCALSTORAGE
+
+const favButton =document.querySelector('.js_fav_button');
+
+function DeleteFav (){
+    
+}
