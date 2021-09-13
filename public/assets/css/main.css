@@ -11,6 +11,9 @@ body {
   display: flex;
   flex-direction: column; }
 
+h2 {
+  font-family: "Lato", sans-serif; }
+
 .container {
   display: flex;
   flex-direction: row; }
@@ -49,6 +52,10 @@ body {
   display: flex;
   justify-content: space-evenly;
   margin-bottom: 3rem; }
+
+.header__title {
+  font-family: "Monofett", cursive;
+  font-size: 80px; }
 
 .page__footer {
   position: fixed;

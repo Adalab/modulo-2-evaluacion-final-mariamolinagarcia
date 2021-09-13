@@ -36,6 +36,8 @@ let favoritesTvShows=[];
         html+=`</div>`;
         showsList.innerHTML = html;
          } 
+
+         listenList();
     }
 
  // este es el evento en botón para que haga el fetch y salga la búsqueda.
@@ -77,6 +79,7 @@ form.addEventListener('submit' , formPreventD);
     for (const itemShow of showLi) {
         itemShow.addEventListener('click' , listenerfav);  
         paintFavoriteShows ();
+        
     }
 
 }
@@ -100,20 +103,26 @@ console.log(favoriteFound);
     if(favoriteFound === -1){
         favoritesTvShows.push(favclicked);
         selectedLi.classList.add('selected');
+        
        
     }else{
         favoritesTvShows.splice(favoriteFound, 1);
         selectedLi.classList.remove('selected'); 
         
     };
+    setLocalStorage();
    
 console.log(favoritesTvShows);
 
-
+    if(favoritesTvShows.length === 0){
+        favoritesContainer.classList.add('hidden');
+    }else{favoritesContainer.classList.remove('hidden');
+    }
+paintFavoriteShows ();
 }
-paintFavoriteShows ()
 
-showsList.addEventListener('click' , listenList);
+
+//showsList.addEventListener('click' , listenList);
 
 
 //! fin añadir a favoritos
@@ -134,17 +143,35 @@ function paintFavoriteShows (){
             
            html+=`<img class="fav-image" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="${favShow.show.name}">`;  
         }else{
-           html+=`<img src="${favShow.show.image.medium}" alt="${favShow.show.name}">`;
+           html+=`<img class="fav-image" src="${favShow.show.image.medium}" alt="${favShow.show.name}">`;
         }; 
     
         html+=`<h3>${favShow.show.name}</h3>`;         
         html+=`</div>`;
         favoriteSidebar.innerHTML = html;
-         } 
-         
+         }
+}
+
+function getLocalStorage(){
+    const localStorageShows = localStorage.getItem('shows');
+
+    if(localStorageShows === null){
+       favoritesTvShows = [];
+    }else{
+        favoritesTvShows = JSON.parse(localStorageShows);
+        
+        paintFavoriteShows();
     }
 
+    if(favoritesTvShows.length === 0){
+        favoritesContainer.classList.add('hidden');
+    }else{favoritesContainer.classList.remove('hidden');
+    }
+}
+getLocalStorage();
 
-
+function setLocalStorage(){
+    localStorage.setItem('shows' ,JSON.stringify(favoritesTvShows));
+}
 
 //# sourceMappingURL=main.js.map

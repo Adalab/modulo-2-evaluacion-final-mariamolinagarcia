@@ -1,66 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Adalab Web Starter Kit</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="icon" href="./assets/images/favicon.png" />
-  </head>
 
-  <body>
-    <div class="page">
-      <header class="page__header">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buscador de series</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Butcherman&family=Lato:wght@300;400;700&family=Monofett&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/main.css" />
 
-      </header>
-      <main class="page__main">
-        <div class="title"></div>
-        <h1>Buscador de series</h1>
-        <form class="js_form">
-          <input type="text" id="search" name="search" class="js_input">
-          <input type="button" value="Search" class="js_button">
+</head>
+
+<body>
+  <div class="page">
+    <header class="page__header">
+
+        <h1 class="header__title">TvShows List</h1>
+    </header>
+    <main class="page__main">
+      <div class="title"></div>
+      <h2>Buscador de series</h2>
+      <form class="js_form">
+        <input type="text" id="search" name="search" class="js_input">
+        <input type="button" value="Search" class="js_button">
 
 
-        </form>
-        </div>
-        <div class="container">
-          <aside>
-            <div class="js_favorites_container fav-container">
-              <h2>Favoritos</h2>
-              <ul class="js_fav_list fav-list">
-                <li>hola</li>
+      </form>
+      </div>
+      <div class="container">
+        <aside>
+          <div class="js_favorites_container fav-container hidden">
+            <h2>Favoritos</h2>
+            <ul class="js_fav_list fav-list ">
 
-              </ul>
 
-            </div>
-          </aside>
-          <section>
+            </ul>
 
-            <div class="js_shows_container section__container">
+          </div>
+        </aside>
+        <section>
 
-              <ul class="js_shows_list shows-list">
-                <!-- 
-                <li class="shows-list__item js_show >;
-              
-                <div class="show__container">        
-              
-                <img src="${show.show.image.medium}" alt="${show.show.name}"> 
-              
-                <h3>${show.show.name}</h3>
-                </div>
-            -->
+          <div class="js_shows_container section__container">
 
-              </ul>
-            </div>
-          </section>
-        </div>
+            <ul class="js_shows_list shows-list">
+              <!-- 
+              <li class="shows-list__item js_show >;
+            
+              <div class="show__container">        
+            
+              <img src="${show.show.image.medium}" alt="${show.show.name}"> 
+            
+              <h3>${show.show.name}</h3>
+              </div>
+          -->
 
-      </main>
-      <footer class="page__footer">
+            </ul>
+          </div>
+        </section>
+      </div>
 
-      </footer>
-    </div>
-    <script src="./assets/js/main.js"></script>
-  </body>
+    </main>
+    <footer class="page__footer">
+        <p><small>Ejercicio realizado por María Molina.</small></p>
+    </footer>
+  </div>
+  <script src="./assets/js/main.js"></script>
+</body>
+
 </html>

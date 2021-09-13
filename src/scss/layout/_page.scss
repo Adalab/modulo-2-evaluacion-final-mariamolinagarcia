@@ -6,6 +6,10 @@ body {
   display: flex;
   flex-direction: column;
 }
+h2 {
+  font-family: $font-text;
+}
+
 .title {
 }
 .container {
