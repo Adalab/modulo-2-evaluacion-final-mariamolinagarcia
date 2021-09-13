@@ -31,7 +31,7 @@ function paintShows (){
         }else{
             favClass="";
         };
-        console.log(isFavorite)
+        
         html+= `<li class="main__section--shows-list__item js_show ${favClass}" id="${show.show.id}">`;
         html+=`<div class="show__container ">`;         
         
