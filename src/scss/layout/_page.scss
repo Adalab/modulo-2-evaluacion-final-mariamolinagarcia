@@ -24,9 +24,7 @@ h2 {
       list-style: none;
       display: flex;
       flex-direction: row;
-      align-items: flex-start;
       flex-wrap: wrap;
-      justify-content: center;
 
       &__item {
         padding: 20px;
@@ -50,6 +48,7 @@ h2 {
       background-color: grayscale($color: #e8e8e8);
       border-radius: 4px;
       padding: 20px;
+      width: 250px;
 
       &__list {
         display: flex;

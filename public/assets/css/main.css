@@ -26,9 +26,7 @@ h2 {
       list-style: none;
       display: flex;
       flex-direction: row;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      justify-content: center; }
+      flex-wrap: wrap; }
       .main__section--shows-list__item {
         padding: 20px;
         margin: 10px; }
@@ -43,7 +41,8 @@ h2 {
       margin-top: 15px;
       background-color: #e8e8e8;
       border-radius: 4px;
-      padding: 20px; }
+      padding: 20px;
+      width: 250px; }
       .main__aside--container__list {
         display: flex;
         flex-direction: column;
@@ -76,7 +75,7 @@ h2 {
   margin-bottom: 2rem; }
   .header__logo {
     font-family: "Monofett", cursive;
-    font-size: 100px;
+    font-size: 110px;
     text-align: center;
     padding-top: 2rem; }
   .header__title {
@@ -104,6 +103,8 @@ h2 {
       margin-left: 10px; }
 
 .footer {
+  position: fixed;
+  bottom: 0;
   text-align: center; }
 
 /*# sourceMappingURL=main.css.map */

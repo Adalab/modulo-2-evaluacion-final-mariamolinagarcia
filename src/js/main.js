@@ -1,5 +1,6 @@
 'use strict';
 
+//* GLOBAL VARIABLES FROM HTML
 const inputSearch = document.querySelector('.js_input');
 const button = document.querySelector('.js_button');
 const showsList = document.querySelector('.js_shows_list');
@@ -7,24 +8,23 @@ const form = document.querySelector('.js_form');
 const favoriteSidebar =document.querySelector('.js_fav_list');
 const favoritesContainer =document.querySelector('.js_favorites_container');
 
-// * TRAER LOS ITEMS DEL API Y PINTARLOS EN EL LISTADO
-
-    //creo un array vacío para llenarlo con el fecth al traer el listado de la API
+//* ARRAYS
 let tvShows=[];
 
 let favoritesTvShows=[];
 
-    //esta función es para que añada el listado al ul del html
- function paintShows (){      
+//!ARRAYS
+
+// * BRING THE API ITEMS AND PAINT THEM IN THE LISTING
+
+function paintShows (){      
     let html= '';
 
-    //hago un bucle para recorrer todos los items que devuelve la API
     for (const show of tvShows) {
         
         html+= `<li class="main__section--shows-list__item js_show" id="${show.show.id}">`;
         html+=`<div class="show__container">`;         
         
-        //aquí hago un condicional para que ponga una imagen alternativa si no tiene imagen desde la API
        if(show.show.image == null){
             
            html+=`<img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="${show.show.name}">`;  
@@ -40,10 +40,12 @@ let favoritesTvShows=[];
          listenList();
     }
 
- // este es el evento en botón para que haga el fetch y salga la búsqueda.
 button.addEventListener('click' , handleSearch);     
 
-//función manejadora: hace la solicitud a la API y me pinta el resultado
+// ! END PAINT SHOWS
+
+//* GET INFO FROM API
+
 function handleSearch (){
     
     fetch(`https://api.tvmaze.com/search/shows?q=${inputSearch.value}`)     
@@ -56,23 +58,22 @@ function handleSearch (){
     });
 
 }
-    // esta función es para que no se envíe el formulario y por tanto no recargue la página
+
+//! END GET INFO FROM API
+
+
+//* NO SUBMIT FUNCTION AND EVENT
 function formPreventD (event){
     event.preventDefault();
 }
 
 form.addEventListener('submit' , formPreventD);
-
-// ! ACABA PARTE DE PINTAR EL GRID
-
-
-// *   FAVORITOS
-
-// es favorito?
+ //! END NO SUBMIT
 
 
 
-// aquí traigo todos los elemenos <li> y les añado un evento click
+// *   FAVORITES
+
  function listenList(){
     const showLi = document.querySelectorAll('.js_show');
 
@@ -92,13 +93,13 @@ function listenerfav(event){
         return tvshow.show.id === selectedShow;
 
     });
-console.log(favclicked);
+
 
     const favoriteFound = favoritesTvShows.findIndex((fav)=>{
         return fav.show.id === selectedShow;
     
 });
-console.log(favoriteFound);
+
 
     if(favoriteFound === -1){
         favoritesTvShows.push(favclicked);
@@ -112,7 +113,7 @@ console.log(favoriteFound);
     };
     setLocalStorage();
    
-console.log(favoritesTvShows);
+
 
     if(favoritesTvShows.length === 0){
         favoritesContainer.classList.add('hidden');
@@ -122,13 +123,9 @@ console.log(favoritesTvShows);
 paintFavoriteShows ();
 }
 
+//! END ADD TO FAVORITES
 
-//showsList.addEventListener('click' , listenList);
-
-
-//! fin añadir a favoritos
-
-//* sidebar favoritos
+//*  PAINT FAVORITES SIDEBAR
 
 function paintFavoriteShows (){      
     let html= '';
@@ -153,6 +150,11 @@ function paintFavoriteShows (){
          }
 }
 
+//! END PAINT FAVORITES SIDEBAR
+
+//* LOCAL STORAGE
+
+
 function getLocalStorage(){
     const localStorageShows = localStorage.getItem('shows');
 
@@ -174,3 +176,4 @@ getLocalStorage();
 function setLocalStorage(){
     localStorage.setItem('shows' ,JSON.stringify(favoritesTvShows));
 }
+//! END LOCALSTORAGE
