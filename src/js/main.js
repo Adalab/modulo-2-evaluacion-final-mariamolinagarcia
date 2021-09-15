@@ -32,7 +32,8 @@ function paintShows (){
            html+=`<img src="${show.show.image.medium}" alt="${show.show.name}">`;
         }; 
     
-        html+=`<h3>${show.show.name}</h3>`;         
+        html+=`<h3>${show.show.name}</h3>`;  
+        html+=`<h3>${show.show.schedule.days}</h3>`;       
         html+=`</div>`;
         showsList.innerHTML = html;
          } 
@@ -55,6 +56,7 @@ function handleSearch (){
         tvShows = data;
         
         paintShows();
+        console.log (tvShows);
     });
 
 }
@@ -80,6 +82,7 @@ form.addEventListener('submit' , formPreventD);
     for (const itemShow of showLi) {
         itemShow.addEventListener('click' , listenerfav);  
         paintFavoriteShows ();
+
         
     }
 
@@ -148,6 +151,34 @@ function paintFavoriteShows (){
         html+=`</div>`;
         favoriteSidebar.innerHTML = html;
          }
+
+         listenFavName();
+         
+}
+
+function listenFavName(){
+    const favShowLi = document.querySelectorAll('.js_fav_show');
+
+    for (const itemFavShow of favShowLi) {
+        itemFavShow.addEventListener('click' , getFavName);  
+             
+    }
+
+}
+
+function getFavName (event){
+    const favId = parseInt(event.currentTarget.id);
+
+    const favclickedName = favoritesTvShows.find((tvshow)=>{
+    
+        return tvshow.show.id === favId;
+
+    });
+
+
+
+    console.log(favclickedName.show.name);
+
 }
 
 //! END PAINT FAVORITES SIDEBAR
